@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8" ?>
+
+<plugin xmlns="http://apache.org/cordova/ns/plugins/1.0" 
+		id="com.mydomain.mypluginid" 
+		version="1.0.0">
+
+	<name>Cordova 3 Plugin Test</name>
+	<description>Testing what all parameters in plugin.xml are used for.</description>
+	<author>Jorge Mier</author>
+	<keywords>cordova, test</keywords>
+	<license>MIT</license>
+
+	<platform name="ios">
+
+		<config-file target="config.xml" parent="/*">
+            <!-- 
+            	@name: JavaScript exec call's Service Name 
+            -->
+			<feature name="MyPluginFeatureName">
+                <!-- 
+                    @name: "ios-package" / "android-package" / etc
+                    @value: Native code Class name
+                -->
+                <param name="ios-package" value="MyPluginNativeClassName" />
+			</feature>
+		</config-file>
+
+		<!--
+			@src: References a file in the plugin directory 
+			relative to this plugin.xml file
+
+			@name: Provides the last part of the module name. It can generally be 
+			whatever you like, and it only matters if you want to use 
+			cordova.require to import other parts of your plugins 
+			in your JavaScript code.
+			The module name for a <js-module> is your plugin's id 
+			followed by the value of name.
+		-->
+		<js-module src="www/MyPlugin.js" name="MyPluginJSModuleName">
+			<clobbers target="myPlugin" />
+		</js-module>
+
+		<header-file src="src/ios/MyPlugin.h" />
+		<source-file src="src/ios/MyPlugin.m" />
+
+	</platform>
+
+</plugin>
